@@ -1,0 +1,103 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Minimercado RickRolling{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
+{% endblock %}
+
+{% block popup %}
+  {% include 'includes/full_image.html' %}
+{% endblock %}
+
+{% block header %}
+  {% include 'includes/navigation.html'%}
+{% endblock %}
+
+{% block content %}
+    <main>
+      <div class="container" id="container">
+        <div class="information-content">
+          <!-- <img id="prodimage" src="{{ url_for('static', filename='images/normal-images/ginda.png') }}" alt="Default image"/> -->
+          <h2 class="text-xl">Información de Productos</h2>
+
+          <p>
+            En esta sección podrás ver los productos que se encuentran disponibles en la plataforma. Podrás ver el tipo de producto, el nombre del producto, la región y comuna donde se encuentra, y
+            una foto del producto.
+          </p>
+        </div>
+        <div class="producto-content">
+          <table>
+            <thead>
+              <!-- 
+                data.tipo, data.producto, data.region, data.comuna, data.foto #len(data) = 5
+               -->
+              
+              <tr>
+                <th>Tipo</th>
+                <th>Producto</th>
+                <th>Región</th>
+                <th>Comuna</th>
+                <th>Foto</th>
+              </tr>
+
+              <tr>
+                <th>Tipo</th>
+                <th>Producto</th>
+                <th>Región</th>
+                <th>Comuna</th>
+                <th>Foto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-table">
+                <td>Verdura</td>
+                <td>Palta</td>
+                <td>Ovalle</td>
+                <td>Ovalle city</td>
+                <!-- <td><img src="../images/minimal-images/palta.png" alt="" height="120" width="120" /></td> -->
+              </tr>
+              <tr class="row-table">
+                <td>Fruta</td>
+                <td>Naranja</td>
+                <td>Metropolitana</td>
+                <td>Quilicura</td>
+                <!-- <td><img src="../images/minimal-images/naranja.png" alt="" height="120" width="120" /></td> -->
+              </tr>
+              <tr class="row-table">
+                <td>Fruta</td>
+                <td>Manzana</td>
+                <td>Metropolitana</td>
+                <td>Puente Alto</td>
+                <!-- <td><img src="../images/minimal-images/manzana.png" alt="" height="120" width="120" /></td> -->
+              </tr>
+              <tr class="row-table">
+                <td>Fruta</td>
+                <td>Ginda</td>
+                <td>Metropolitana</td>
+                <td>Santiago Centro</td>
+                <!-- <td><img src="../images/minimal-images/ginda.png" alt="" height="120" width="120" /></td> -->
+              </tr>
+              <tr class="row-table">
+                <td>Fruta</td>
+                <td>cebolla</td>
+                <td>Metropolitana</td>
+                <td>Quilicura</td>
+                <!-- <td><img src="../images/minimal-images/cebolla.png" alt="" height="120" width="120" /></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'includes/footer.html' %}
+{% endblock %}
+
+{% block js %}
+    <script lang="javascript" src="{{url_for('static', filename='js/popup.js')}}"></script>
+    <script lang="javascript" src="{{url_for('static', filename='js/display-informacion.js')}}"></script>
+{% endblock %}

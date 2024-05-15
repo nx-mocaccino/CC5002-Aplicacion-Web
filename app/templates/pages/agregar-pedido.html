@@ -1,0 +1,138 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Agregar Producto {% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/agregar-producto.css')}}" />
+{% endblock %}
+
+{% block popup %}
+    {% include 'includes/popup_success.html' %}
+{% endblock %}
+
+{% block header %}
+    {% include 'includes/navigation.html'%}
+{% endblock %}
+
+{% block content %}
+    <main>
+      <!-- content -->
+      <div class="container">
+        <section class="user-form">
+          <form action="#" method="post">
+            <h2 class="text-xl">Formulario de Pedidos</h2>
+
+            <div class="user-form-content">
+              <!-- nombre de usuario -->
+              <div class="input-box">
+                <label for="username">
+                  Nombre Completo
+                  <input type="text" placeholder="nombre completo" id="username" name="username" required />
+                </label>
+                <div class="error"></div>
+              </div>
+              <!-- email -->
+              <div class="input-box">
+                <label for="email">
+                  Dirección Correo Electrónico
+                  <input type="email" placeholder="Ingresar dirección de correo valida" id="email" name="email" required />
+                </label>
+                <div class="error"></div>
+              </div>
+              <!-- numero de telefono -->
+              <div class="input-box">
+                <label for="phone"
+                  >Número de Teléfono
+                  <input type="tel" maxlength="15" placeholder="9 XXXX XXXX" id="phone" name="phone" />
+                </label>
+                <div class="error"></div>
+              </div>
+              <!-- productos -->
+              <div class="double-box">
+                <!-- fruta o verdura -->
+                <div class="input-box">
+                  <label for="categoria-producto"
+                    >Categoria
+                    <select name="categoria-producto" id="categoria-producto" required>
+                      <option value="" selected>Seleccionar</option>
+                      <option value="frutas">Frutas</option>
+                      <option value="verduras">Verduras</option>
+                    </select>
+                  </label>
+                  <div class="error"></div>
+                </div>
+
+                <!-- tipo de producto -->
+                <div class="input-box">
+                  <label for="producto"
+                    >Producto
+                    <select name="tipo-producto" id="producto" multiple required>
+                      <option value="" selected>Seleccionar</option>
+                    </select>
+                  </label>
+                  <div class="error"></div>
+                </div>
+              </div>
+
+              <!-- region -->
+              <div class="double-box">
+                <div class="input-box">
+                  <label for="region"
+                    >Región:
+                    <select required name="region" id="region">
+                      <option value="" selected>Seleccionar</option>
+                    </select>
+                  </label>
+                  <div class="error"></div>
+                </div>
+
+                <!-- ciudad -->
+                <div class="input-box">
+                  <label for="comuna"
+                    >Comuna:
+                    <select name="comuna" id="comuna" required>
+                      <option value="" disabled>Seleccionar</option>
+                    </select>
+                  </label>
+                  <div class="error"></div>
+                </div>
+              </div>
+
+              <!-- descripcion -->
+              <div class="input-box">
+                <label for="user_description"
+                  >Descripción
+                  <textarea name="user_description" id="user_description" rows="4" cols="50"></textarea>
+                </label>
+                <div class="error"></div>
+              </div>
+
+              <!-- fotos del producto -->
+              <div class="input-box">
+                <label for="archivo-producto"
+                  >Fotos de productos:
+                  <input type="file" id="archivo-producto" name="archivo-producto" accept="image/*" multiple required />
+                </label>
+                <div class="error"></div>
+              </div>
+
+              <div class="button-container">
+                <button type="button" id="button-form">Agregard Pedido</button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+  {% include 'includes/footer.html' %}
+{% endblock %}
+
+{% block js %}
+  <script lang="javascript" src="{{url_for('static', filename='js/popup.js')}}"></script>
+  <script lang="javascript" src="{{url_for('static', filename='js/validation.js')}}"></script>
+  <script lang="javascript" src="{{url_for('static', filename='js/load-option.js')}}"></script>
+{% endblock %}
