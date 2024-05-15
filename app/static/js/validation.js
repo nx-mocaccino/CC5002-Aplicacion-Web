@@ -58,7 +58,10 @@ function isValidEmail(email) {
 }
 
 function isValidPhone(phone) {
-  const trimmedInput = phone.value.trim();
+  const trimmedInput = phone.value.trim().replace(/\s/g, "");
+  // del espacio en blanco
+  console.log(trimmedInput);
+
   if (trimmedInput.length === 0) {
     return {valid: 0, message: ""};
   }
