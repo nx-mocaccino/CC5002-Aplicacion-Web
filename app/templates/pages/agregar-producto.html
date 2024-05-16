@@ -61,9 +61,9 @@
                   <label for="categoria-producto"
                     >Categoria
                     <select name="categoria-producto" id="categoria-producto" required>
-                      <option value="" selected>Seleccionar</option>
-                      <option value="fruta">Frutas</option>
-                      <option value="verdura">Verduras</option>
+                      <option value="" label="option" selected>Seleccionar</option>
+                      <option value="fruta" label="option1">Frutas</option>
+                      <option value="verdura" label = "option2">Verduras</option>
                     </select>
                   </label>
 
@@ -75,7 +75,7 @@
                   <label for="producto"
                     >Producto
                     <select name="tipo-producto" id="producto" size=5 multiple required>
-                      <option value="" disabled>Seleccionar</option>
+                      <option value="" label="option4" disabled>Seleccionar</option>
                     </select>
                   </label>
                   <div class="error"></div>
@@ -88,10 +88,10 @@
                   <label for="region"
                     >Región:
                     <select required name="region" id="region">
-                      <option value="" selected default>Seleccionar</option>
+                      <option value="" label="1" selected>Seleccionar</option>
                       {% if data %}
                         {% for option in data %}
-                          <option value="{{option.id}}">{{option.name}}</option>
+                          <option value="{{option.id}}" label="2">{{option.name}}</option>
                         {% endfor %}
                       {% endif %}
                     </select>
@@ -104,7 +104,7 @@
                   <label for="comuna"
                     >Comuna:
                     <select name="comuna" id="comuna" required>
-                      <option value="" selected></option>
+                      <option value="" label="6" selected></option>
                     </select>
                   </label>
                   <div class="error"></div>
@@ -144,7 +144,7 @@
 {% endblock %}
 
 {% block js %}
-  <script lang="javascript" src="{{url_for('static', filename='js/popup.js')}}"></script>
-  <script lang="javascript" src="{{url_for('static', filename='js/validation.js')}}"></script>
-  <script lang="javascript" src="{{url_for('static', filename='js/loading-options.js')}}"></script>
+  <script  src="{{url_for('static', filename='js/popup.js')}}"></script>
+  <script  src="{{url_for('static', filename='js/validation.js')}}"></script>
+  <script  src="{{url_for('static', filename='js/loading-options.js')}}"></script>
 {% endblock %}
