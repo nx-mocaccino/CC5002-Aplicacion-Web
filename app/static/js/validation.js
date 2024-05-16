@@ -50,7 +50,7 @@ function isValidName(name) {
 
 function isValidEmail(email) {
   const trimmedInput = email.value.trim();
-  if (trimmedInput.lengt <= 30) {
+  if (trimmedInput.lengt > 30) {
     return false;
   }
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -78,7 +78,7 @@ function isValidTypeProduct(category) {
 }
 function isValidDescription(description) {
   // validar que solo sea texto
-  const re = /^[a-zA-Z\s]*$/;
+  const re = /^[a-zA-Z0-9\s.,!?]*$/;
   if (!re.test(description.value.trim())) {
     return false;
   }
@@ -210,16 +210,14 @@ function validateForm() {
   } else {
     setSuccess(files);
   }
-  // pop-up
   if (check) {
   }
-  return check;
+  return true;
 }
 
 function submitRegisterDatabase(){
     let forms = document.getElementById("conf-form");
-    console.log(forms);
-    forms.submit();
+    forms.submit()
     console.log("Se sube la información al servidor!")
 }
 
@@ -241,7 +239,6 @@ bttn_form.addEventListener("click", function (e) {
       success_modal = document.querySelector(".modal-success");
       maskModal = document.querySelector(".mask-modal1");
       openModal(maskModal, success_modal);
-      
     });
   }
 });
@@ -251,6 +248,5 @@ document.addEventListener("DOMContentLoaded", function () {
   const submit_conf_bttn = document.getElementById("submit-conf-btn");
   submit_conf_bttn.addEventListener("click", function () {
     submitRegisterDatabase()});
-    
+    console.log("Se ha cargado el DOM!");
   });
-

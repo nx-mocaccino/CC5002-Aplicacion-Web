@@ -4,7 +4,7 @@ const maduracion_ls = ["lista para consumir", "madura", "verde"];
 
 function DisplayProduct(val) {
   let [td_tipo, td_producto, td_region, td_comuna, td_foto] = val;
-  const info_div = document.querySelector(".information-content");
+ 
   let objectElement = document.createElement("object");
   objectElement.setAttribute("type", "text/html");
   objectElement.setAttribute("data", "..static/html/informacion-pedido.html");
@@ -51,16 +51,28 @@ function DisplayProduct(val) {
   objectElement.classList.add("flexible-content");
 }
 
-// const row_table = document.querySelectorAll(".row-table");
-// row_table.forEach(row => {
-//   row.addEventListener("click", function (e) {
-//     let values = e.currentTarget.querySelectorAll("td");
-//     values = Array.from(values)
-//       .slice(0, -1)
-//       .map(cell => cell.textContent.trim());
-    
-//     values.push(e.currentTarget.querySelector("td:last-child img").getAttribute("src"));
-//     DisplayProduct(values);
-//   });
-// });
+function charge_table(number, sumval){
+  number = parseInt(number) + sumval
+  if (number <= 0) {
+    number = 0
+  }
+  console.log(number)
+  window.location.href = `/ver_producto/${number}`;
+}
 
+
+const selected_= document.getElementById("btn-next");
+selected_.addEventListener("click", () => {
+  // obtner el url
+  const url = document.location.pathname;
+  let number = url.split("/")[2];
+  charge_table(number, 5);
+});
+
+const selected_back = document.getElementById("btn-back");
+selected_back.addEventListener("click", () => {
+  // obtner el url
+  const url = document.location.pathname;
+  let number = url.split("/")[2];
+  charge_table(number, -5);
+});

@@ -28,6 +28,15 @@ def get_regions():
 	results = cursor.fetchall()
 	return results
 
+def get_products(id): #id actual
+    conn = get_conn()
+    cursor = conn.cursor()
+    # cursor.execute("SELECT COUNT(*) FROM producto")   
+    query_sql = "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT %s, 5"
+    cursor.execute(query_sql, (id,))
+    products = cursor.fetchall()
+    return products
+
 def get_communes(region_id):
     conn = get_conn()
     cursor = conn.cursor()
@@ -48,6 +57,27 @@ def create_product_vegetable_fruit(producto_id, tipo_verdura_fruta_id):
     cursor.execute(QUERY_DICT["insert_product_vegatable_fruit"], (producto_id, tipo_verdura_fruta_id,))
     conn.commit()
     return cursor.lastrowid
+
+def get_picture_by_product(product_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["fotos_informadas_para_producto"], (product_id,))
+    results = cursor.fetchall()
+    return results
+
+def get_product_vegetable_fruit_by_product(product_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["tipos_verdura_fruta_asociados_a_producto"], (product_id,))
+    results = cursor.fetchall()
+    return results
+
+def get_commune_by_id(id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_commune_by_id"], (id,))
+    results = cursor.fetchone()
+    return results
 
 def get_vegetable_fruit_by_name(name):
     conn = get_conn()

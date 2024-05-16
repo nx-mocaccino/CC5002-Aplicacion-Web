@@ -28,66 +28,34 @@
           </p>
         </div>
         <div class="producto-content">
-          <table>
+          <table id="table-content">
             <thead>
-              <!-- 
-                data.tipo, data.producto, data.region, data.comuna, data.foto #len(data) = 5
-               -->
-              
               <tr>
+                <th>ID</th>
                 <th>Tipo</th>
-                <th>Producto</th>
-                <th>Región</th>
                 <th>Comuna</th>
-                <th>Foto</th>
-              </tr>
-
-              <tr>
-                <th>Tipo</th>
-                <th>Producto</th>
-                <th>Región</th>
-                <th>Comuna</th>
+                <th>Productor</th>
                 <th>Foto</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="row-table">
-                <td>Verdura</td>
-                <td>Palta</td>
-                <td>Ovalle</td>
-                <td>Ovalle city</td>
-                <!-- <td><img src="../images/minimal-images/palta.png" alt="" height="120" width="120" /></td> -->
-              </tr>
-              <tr class="row-table">
-                <td>Fruta</td>
-                <td>Naranja</td>
-                <td>Metropolitana</td>
-                <td>Quilicura</td>
-                <!-- <td><img src="../images/minimal-images/naranja.png" alt="" height="120" width="120" /></td> -->
-              </tr>
-              <tr class="row-table">
-                <td>Fruta</td>
-                <td>Manzana</td>
-                <td>Metropolitana</td>
-                <td>Puente Alto</td>
-                <!-- <td><img src="../images/minimal-images/manzana.png" alt="" height="120" width="120" /></td> -->
-              </tr>
-              <tr class="row-table">
-                <td>Fruta</td>
-                <td>Ginda</td>
-                <td>Metropolitana</td>
-                <td>Santiago Centro</td>
-                <!-- <td><img src="../images/minimal-images/ginda.png" alt="" height="120" width="120" /></td> -->
-              </tr>
-              <tr class="row-table">
-                <td>Fruta</td>
-                <td>cebolla</td>
-                <td>Metropolitana</td>
-                <td>Quilicura</td>
-                <!-- <td><img src="../images/minimal-images/cebolla.png" alt="" height="120" width="120" /></td> -->
-              </tr>
+              {% if data %}
+                {% for product in data%}
+                <tr>
+                  <th>{{product.id}}</th>
+                  <th>{{product.tipo}}</th>
+                  <th>{{product.comuna}}</th>
+                  <th>{{product.nombre_productor}}</th>
+                  <td><img src={{product.foto}} alt="" height="120" width="120" /></td>
+                </tr>
+                {% endfor %}
+              {% endif %}
             </tbody>
           </table>
+          <div>
+            <button class="btn" id="btn-back">Anteriores</button>
+            <button class="btn" id="btn-next">Siguientes</button>
+          </div>
         </div>
       </div>
     </main>
@@ -101,3 +69,11 @@
     <script lang="javascript" src="{{url_for('static', filename='js/popup.js')}}"></script>
     <script lang="javascript" src="{{url_for('static', filename='js/display-informacion.js')}}"></script>
 {% endblock %}
+
+
+<!-- <tr class="row-table"> -->
+  <!-- <td>Fruta</td> -->
+  <!-- <td>cebolla</td> -->
+  <!-- <td>Metropolitana</td> -->
+  <!-- <td>Quilicura</td> -->
+  <!-- <td><img src="../images/minimal-images/cebolla.png" alt="" height="120" width="120" /></td> -->

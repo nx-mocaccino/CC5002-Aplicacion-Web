@@ -20,11 +20,17 @@
     <!-- content -->
     <div class="container">
         <section class="user-form">
+
           <form id="conf-form" action="{{url_for('agregar_producto')}}" method="POST" enctype="multipart/form-data">
             <h2 class="text-xl">Formulario de Productos</h2>
 
             <div class="user-form-content">
               <!-- nombre de usuario -->
+              {% if error_message %}
+              <div class="error-message">
+                  <p>ERROR: {{ error_message }}</p>
+              </div>
+              {% endif %}
               <div class="input-box">
                 <label for="username">
                   Nombre Completo
@@ -83,9 +89,11 @@
                     >Región:
                     <select required name="region" id="region">
                       <option value="" selected default>Seleccionar</option>
-                      {% for option in data %}
-                        <option value="{{option.id}}">{{option.name}}</option>
-                      {% endfor %}
+                      {% if data %}
+                        {% for option in data %}
+                          <option value="{{option.id}}">{{option.name}}</option>
+                        {% endfor %}
+                      {% endif %}
                     </select>
                   </label>
                   <div class="error"></div>
