@@ -1,4 +1,3 @@
-// Set Styles for the form
 function setError(element, message) {
   const parent = element.parentElement.parentElement;
   const error = parent.querySelector(".error");
@@ -40,12 +39,14 @@ function isValidName(name) {
   }
 
   // solo caracteres alfabéticos
+
+  // añadir la ñ
   const re = /^[a-zA-Z\s]*$/;
   if (!re.test(trimmedInput)) {
     message = "Solo se debe contener caracteres alfabéticos.";
     check = -1;
   }
-  return {valid: check, message: message};
+  return { valid: check, message: message };
 }
 
 function isValidEmail(email) {
@@ -53,28 +54,28 @@ function isValidEmail(email) {
   if (trimmedInput.lengt > 30) {
     return false;
   }
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email.value.trim());
 }
 
 function isValidPhone(phone) {
   const trimmedInput = phone.value.trim().replace(/\s/g, "");
   // del espacio en blanco
-  console.log(trimmedInput);
 
   if (trimmedInput.length === 0) {
-    return {valid: 0, message: ""};
+    return { valid: 0, message: "" };
   }
   const re = /^9\d{8}$/; // se valida el largo y que empiece con 9
   if (!re.test(trimmedInput)) {
-    return {valid: -1, message: "Número no valido."};
+    return { valid: -1, message: "Número no valido." };
   }
 
-  return {valid: 1, message: ""};
+  return { valid: 1, message: "" };
 }
 function isValidTypeProduct(category) {
   const trimmedInput = category.value.trim();
-  return trimmedInput !== "";
+  return trimmedInput !== "vacio";
 }
 function isValidDescription(description) {
   // validar que solo sea texto
@@ -95,28 +96,32 @@ function isValidComuna(comuna) {
 function isValidProducto(producto) {
   const selectedOps = producto.selectedOptions;
   //mas de uno
-  if (!selectedOps.length){
-    return {valid: false, message: "Debe seleccionar al menos un producto."};
+  if (!selectedOps.length) {
+    return { valid: false, message: "Debe seleccionar al menos un producto." };
   }
   //maximo cinco
   if (selectedOps.length > 5) {
-      return {valid: false, message: "Debe como máximo cinco productos."};
-    }
+    return { valid: false, message: "Debe como máximo cinco productos." };
+  }
   for (let i = 0; i < selectedOps.length; i++) {
-    if (selectedOps[i].value === "") {
-      return {valid: false, message: "'Por seleccionar' no valido."};
+    console.log(selectedOps[i].value);
+    if (selectedOps[i].value === "vacio") {
+      return { valid: false, message: "'Por seleccionar' no valido." };
     }
-  } 
+  }
 
-  return {valid: true, message: ""};
+  return { valid: true, message: "" };
 }
 
 function isValidFile(file) {
   var files = file.files;
   if (files.length > 3 || files.length < 1) {
-    return {valid: false, message: "Debe subir al menos una imagen y menos de 3."};
+    return {
+      valid: false,
+      message: "Debe subir al menos una imagen y menos de 3.",
+    };
   }
-  return {valid: true, message: ""};
+  return { valid: true, message: "" };
 }
 
 // Form validation. Check all fields
@@ -187,6 +192,7 @@ function validateForm() {
 
   // comuna - mandatory
   if (!isValidComuna(comuna)) {
+    // setError(comuna, "Comuna No valida");
     setError(comuna, "");
     check = false;
   } else {
@@ -196,9 +202,10 @@ function validateForm() {
   // producto - mandatory
   const selectedProduct = isValidProducto(producto);
   if (selectedProduct.valid === false) {
-      setError(producto, selectedProduct.message);
-      check = false;
-  }else {
+    // setError(producto, selectedProduct.message);
+    setError(producto, "");
+    check = false;
+  } else {
     setSuccess(producto);
   }
 
@@ -212,41 +219,5 @@ function validateForm() {
   }
   if (check) {
   }
-  return true;
+  return check;
 }
-
-function submitRegisterDatabase(){
-    let forms = document.getElementById("conf-form");
-    forms.submit()
-    console.log("Se sube la información al servidor!")
-}
-
-// popup
-const bttn_form = document.getElementById("button-form");
-bttn_form.addEventListener("click", function (e) {
-  let checkedForm = validateForm();
-  if (checkedForm) {
-    maskModal = document.querySelector(".mask-modal");
-    modal = document.querySelector(".modal");
-    openModal(maskModal, modal);
-
-    document.querySelector(".close-modal").addEventListener("click", function () {
-      closeModal(maskModal, modal);
-    });
-
-    document.querySelector(".check-modal").addEventListener("click", function () {
-      closeModal(maskModal, modal);
-      success_modal = document.querySelector(".modal-success");
-      maskModal = document.querySelector(".mask-modal1");
-      openModal(maskModal, success_modal);
-    });
-  }
-});
-
-//main
-document.addEventListener("DOMContentLoaded", function () {
-  const submit_conf_bttn = document.getElementById("submit-conf-btn");
-  submit_conf_bttn.addEventListener("click", function () {
-    submitRegisterDatabase()});
-    console.log("Se ha cargado el DOM!");
-  });

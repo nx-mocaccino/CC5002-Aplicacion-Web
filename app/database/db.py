@@ -28,6 +28,13 @@ def get_regions():
 	results = cursor.fetchall()
 	return results
 
+def get_region_by_id(id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_region_by_id"], (id,))
+    results = cursor.fetchone()
+    return results
+
 def get_products(id): #id actual
     conn = get_conn()
     cursor = conn.cursor()

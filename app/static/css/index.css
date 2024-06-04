@@ -143,3 +143,11 @@ footer .container {
   padding: 10px 10px;
   background: var(--black-color);
 }
+
+
+.modal-active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(1vh);
+  display: flex;
+}

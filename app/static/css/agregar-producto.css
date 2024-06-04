@@ -181,8 +181,6 @@ input {
 
 .input-box .error {
   color: var(--red-color);
-  font-size: 9px;
-  height: 13px;
 }
 
 
@@ -228,6 +226,7 @@ input {
 
 #producto {
   height: 100px;
+  
 }
 /* FOOTER */
 .container .footer-content {

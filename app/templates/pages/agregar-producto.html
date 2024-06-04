@@ -3,148 +3,141 @@
 {% block title %} Agregar Producto {% endblock %}
 
 {% block css %}
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/agregar-producto.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/agregar-producto.css')}}" />
 {% endblock %}
 
 {% block popup %}
-    {% include 'includes/popup_confirm.html'%} 
+{% include 'includes/popup_confirm.html' %}
+<!-- {% include 'includes/popup_rolling.html' %} -->
 {% endblock %}
 
 {% block header %}
-    {% include 'includes/navigation.html'%}
+{% include 'includes/navigation.html'%}
 {% endblock %}
 
 {% block content %}
-  <main>
-    <!-- content -->
-    <div class="container">
-        <section class="user-form">
+<main>
+  <!-- content -->
+  <div class="container">
+    <section class="user-form">
 
-          <form id="conf-form" action="{{url_for('agregar_producto')}}" method="POST" enctype="multipart/form-data">
-            <h2 class="text-xl">Formulario de Productos</h2>
+      <form id="conf-form" action="{{url_for('agregar_producto')}}" method="POST" enctype="multipart/form-data">
+        <h2 class="text-xl">Formulario de Productos</h2>
 
-            <div class="user-form-content">
-              <!-- nombre de usuario -->
-              {% if error_message %}
-              <div class="error-message">
-                  <p>ERROR: {{ error_message }}</p>
-              </div>
-              {% endif %}
-              <div class="input-box">
-                <label for="username">
-                  Nombre Completo
-                  <input type="text" placeholder="nombre completo" id="username" name="username" required />
-                </label>
-                <div class="error"></div>
-              </div>
-              <!-- email -->
-              <div class="input-box">
-                <label for="email">
-                  Dirección Correo Electrónico
-                  <input type="email" placeholder="Ingresar dirección de correo valida" id="email" name="email" required />
-                </label>
-                <div class="error"></div>
-              </div>
-              <!-- numero de telefono -->
-              <div class="input-box">
-                <label for="phone"
-                  >Número de Teléfono
-                  <input type="tel" maxlength="15" placeholder="9 XXXX XXXX" pattern="[0-9]" id="phone" name="phone" />
-                </label>
-                <div class="error"></div>
-              </div>
-              <!-- productos -->
-              <div class="double-box">
-                <!-- fruta o verdura -->
-                <div class="input-box">
-                  <label for="categoria-producto"
-                    >Categoria
-                    <select name="categoria-producto" id="categoria-producto" required>
-                      <option value="" label="option" selected>Seleccionar</option>
-                      <option value="fruta" label="option1">Frutas</option>
-                      <option value="verdura" label = "option2">Verduras</option>
-                    </select>
-                  </label>
+        <div class="user-form-content">
+          <!-- nombre de usuario -->
 
-                  <div class="error"></div>
-                </div>
+          <div class="error-message"></div>
 
-                <!-- tipo de producto -->
-                <div class="input-box">
-                  <label for="producto"
-                    >Producto
-                    <select name="tipo-producto" id="producto" size=5 multiple required>
-                      <option value="" label="option4" disabled>Seleccionar</option>
-                    </select>
-                  </label>
-                  <div class="error"></div>
-                </div>
-              </div>
 
-              <!-- region -->
-              <div class="double-box">
-                <div class="input-box">
-                  <label for="region"
-                    >Región:
-                    <select required name="region" id="region">
-                      <option value="" label="1" selected>Seleccionar</option>
-                      {% if data %}
-                        {% for option in data %}
-                          <option value="{{option.id}}" label="2">{{option.name}}</option>
-                        {% endfor %}
-                      {% endif %}
-                    </select>
-                  </label>
-                  <div class="error"></div>
-                </div>
-
-                <!-- ciudad -->
-                <div class="input-box">
-                  <label for="comuna"
-                    >Comuna:
-                    <select name="comuna" id="comuna" required>
-                      <option value="" label="6" selected></option>
-                    </select>
-                  </label>
-                  <div class="error"></div>
-                </div>
-              </div>
-
-              <!-- descripcion -->
-              <div class="input-box">
-                <label for="user_description"
-                  >Descripción
-                  <textarea name="user_description" id="user_description" rows="4" cols="50"></textarea>
-                </label>
-                <div class="error"></div>
-              </div>
-
-              <!-- fotos del producto -->
-              <div class="input-box">
-                <label for="archivo-producto"
-                  >Fotos de productos:
-                  <input type="file" id="archivo-producto" name="archivo-producto" accept="image/*" multiple required />
-                </label>
-                <div class="error"></div>
-              </div>
-
-              <div class="button-container">
-                <button type="button" id="button-form">Agregar Producto</button>
-              </div>
+          <div class="input-box">
+            <label for="username">
+              Nombre Completo
+              <input type="text" placeholder="nombre completo" id="username" name="username" required />
+            </label>
+            <div class="error"></div>
+          </div>
+          <!-- email -->
+          <div class="input-box">
+            <label for="email">
+              Dirección Correo Electrónico
+              <input type="email" placeholder="Ingresar dirección de correo valida" id="email" name="email" required />
+            </label>
+            <div class="error"></div>
+          </div>
+          <!-- numero de telefono -->
+          <div class="input-box">
+            <label for="phone">Número de Teléfono
+              <input type="tel" maxlength="15" placeholder="9 XXXX XXXX" pattern="[0-9]" id="phone" name="phone" />
+            </label>
+            <div class="error"></div>
+          </div>
+          <!-- productos -->
+          <div class="double-box">
+            <!-- fruta o verdura -->
+            <div class="input-box">
+              <label for="categoria-producto">Categoria
+                <select name="categoria-producto" id="categoria-producto" required>
+                  <option value="vacio" label="Seleccionar" selected>Seleccionar</option>
+                  <option value="fruta" label="fruta">Frutas</option>
+                  <option value="verdura" label="verdura">Verduras</option>
+                </select>
+              </label>
+              <div class="error"></div>
             </div>
-          </form>
-        </section>
-      </div>
-    </main>
+
+            <!-- tipo de producto -->
+            <div class="input-box">
+              <label for="producto">Producto
+                <select name="tipo-producto" id="producto" size=5 multiple required>
+                  <option value="0" label="Seleccionar" default disabled>Seleccionar</option>
+                </select>
+              </label>
+              <div class="error"></div>
+            </div>
+
+          </div>
+
+          <!-- region -->
+          <div class="double-box">
+            <div class="input-box">
+              <label for="region">Región:
+                <select required name="region" id="region">
+                  <option value="" label="" selected>Seleccionar</option>
+                  {% if data %}
+                  {% for option in data %}
+                  <option value="{{option.id}}">{{option.name}}</option>
+                  {% endfor %}
+                  {% endif %}
+                </select>
+              </label>
+              <div class="error"></div>
+            </div>
+
+            <!-- ciudad -->
+            <div class="input-box">
+              <label for="comuna">Comuna:
+                <select name="comuna" id="comuna" required>
+                  <option value="" label="Seleccionar" default></option>
+                </select>
+              </label>
+              <div class="error"></div>
+            </div>
+          </div>
+
+          <!-- descripcion -->
+          <div class="input-box">
+            <label for="user_description">Descripción
+              <textarea name="user_description" id="user_description" rows="4" cols="50"></textarea>
+            </label>
+            <div class="error"></div>
+          </div>
+
+          <!-- fotos del producto -->
+          <div class="input-box">
+            <label for="archivo-producto">Fotos de productos:
+              <input type="file" id="archivo-producto" name="archivo-producto" accept="image/*" multiple required />
+            </label>
+            <div class="error"></div>
+          </div>
+
+          <div class="button-container">
+            <button type="button" id="button-form">Agregar Producto</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
 {% endblock %}
 
 {% block footer %}
-  {% include 'includes/footer.html' %}
+{% include 'includes/footer.html' %}
 {% endblock %}
 
 {% block js %}
-  <script  src="{{url_for('static', filename='js/popup.js')}}"></script>
-  <script  src="{{url_for('static', filename='js/validation.js')}}"></script>
-  <script  src="{{url_for('static', filename='js/loading-options.js')}}"></script>
+<script src="{{url_for('static', filename='js/validation.js')}}"></script>
+<script src="{{url_for('static', filename='js/loading-options.js')}}"></script>
+<script src="{{url_for('static', filename='js/popup.js')}}"></script>
 {% endblock %}

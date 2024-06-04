@@ -1,21 +1,30 @@
 function charge_product(key){
-  fetch("/fetch_products/" + key, { method: "GET" })
-  .then(response => response.json())
-  .then(data => {
+  if (key === "vacio"){
     document.getElementById("producto").innerHTML = "";
-
     var option = document.createElement("option");
     option.text = "Seleccionar";
     option.value = "";
     document.getElementById("producto").add(option);
+    return
+  }
+    else{
+      fetch("/fetch_products/" + key, { method: "GET" }) //1
+      .then(response => response.json()) //2
+      .then(data => { //3
+        document.getElementById("producto").innerHTML = "";
+        var option = document.createElement("option");
+        option.text = "Seleccionar";
+        option.value = "";
+        document.getElementById("producto").add(option);
 
-    data.forEach(element => {
-      var option = document.createElement("option");
-      option.value = element;
-      option.text = element;
-      document.getElementById("producto").add(option);
-    })
-  })
+        data.forEach(element => {
+          var option = document.createElement("option");
+          option.value = element;
+          option.text = element;
+          document.getElementById("producto").add(option);
+        })
+      })
+    }
 }
 
 function charge_communes(key) {
@@ -35,7 +44,6 @@ function charge_communes(key) {
         option.value = element.id;
         option.text = element.name;
         document.getElementById("comuna").add(option);})
-
     });
 }
 
@@ -49,7 +57,6 @@ function current_select_values(e) {
 const selected_category = document.getElementById("categoria-producto");
 
 selected_category.addEventListener("change", () => {
-  console.log(selected_category.value)
   charge_product(selected_category.value)
 });
 

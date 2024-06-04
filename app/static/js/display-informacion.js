@@ -76,3 +76,4 @@ selected_back.addEventListener("click", () => {
   let number = url.split("/")[2];
   charge_table(number, -5);
 });
+

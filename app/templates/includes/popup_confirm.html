@@ -1,28 +1,24 @@
 <div class="mask-modal" role="dialog">
     <div class="modal" role="alert">
-    <div class="user-form popup-info"> 
-        <div id="content-popup" >
-        <h3>¿Confirma el registro de este producto?</h3>
-        
-        <p>Al confirmar el registro será subido a la plataforma y estará 
-            disponible para los usuarios interesados.
-        </p>
-        <div class="bttn-class">
-            <button id="submit-conf-btn" class="check-modal">Si, confirmo</button>
-            <button class="close-modal">Volver al formulario</button>
-        </div>
+        <div class="user-form popup-info"> 
+            <div id="content-popup" >
+                <h3>¿Confirma el registro de este producto?</h3>
+                <p>Al confirmar el registro será subido a la plataforma y estará 
+                disponible para los usuarios interesados.</p>
+                <div class="bttn-class">
+                    <button id="submit-conf-bttn" class="check-modal">Si, confirmo</button>
+                    <button id="not-submit-conf-bttn" class="close-modal">Volver al formulario</button>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
-<div class="mask-modal1" role="dialog">
+
     <div class="modal" role="alert">
-    <div class="modal-success user-form success-info"> 
-        <img src="{{url_for('static', filename='images/check.jpg')}}" alt="check" width="100" height="100" />
-        <p> Producto(s) agregado con éxito!</p>
-        <a href="{{url_for('index')}}">
-            <img src="{{url_for('static', filename='images/image.ico')}}" alt="logo" />
-            </a>
+        <div class="modal-success user-form success-info"> 
+            <img src="{{url_for('static', filename='images/check.jpg')}}" alt="check" width="100" height="100" />
+            <p> Producto(s) agregado con éxito!</p>
+            <a href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/image.ico')}}" alt="logo" /></a>
+        </div>
     </div>
-    </div>
+    
 </div>

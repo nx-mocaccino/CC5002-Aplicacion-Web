@@ -3,9 +3,7 @@ import json
 from werkzeug.utils import secure_filename
 import database.db as db
 
-ALLOWED_EXTENSIONS = {'txt', 'png', 'jpg', 'jpeg', 'gif'}
-
-import re
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 def is_valid_username(name):
     trimmed_input = name.strip()
@@ -121,15 +119,15 @@ def is_valid_files(files):
 def validate_request(username, email, phone, category, products, region, commune, description, files):
     message = ""
 
-    print("VALORESD DE ENTRADA",
-        "username: ", username,
-          "email: ", email,
-          "phone: ", phone,
-          "category: ", category,
-          "products: ", products,
-          "region: ", region,
-          "commune: ", commune,
-          "description: ", description)
+    # print("VALORESD DE ENTRADA",
+    #     "username: ", username,
+    #       "email: ", email,
+    #       "phone: ", phone,
+    #       "category: ", category,
+    #       "products: ", products,
+    #       "region: ", region,
+    #       "commune: ", commune,
+    #       "description: ", description)
     
     _username = is_valid_username(username)
     _mail = is_valid_email(email)
@@ -170,5 +168,5 @@ def validate_request(username, email, phone, category, products, region, commune
 
     if message != "":
         return [False, message]
-    return [True, "Valid request"]
+    return True, "Valid request"
         

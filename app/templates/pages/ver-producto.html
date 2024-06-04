@@ -3,69 +3,75 @@
 {% block title %}Minimercado RickRolling{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
 {% endblock %}
 
 {% block popup %}
-  {% include 'includes/full_image.html' %}
+{% include 'includes/full_image.html' %}
 {% endblock %}
 
 {% block header %}
-  {% include 'includes/navigation.html'%}
+{% include 'includes/navigation.html'%}
 {% endblock %}
 
 {% block content %}
-    <main>
-      <div class="container" id="container">
-        <div class="information-content">
-          <!-- <img id="prodimage" src="{{ url_for('static', filename='images/normal-images/ginda.png') }}" alt="Default image"/> -->
-          <h2 class="text-xl">Información de Productos</h2>
+<main>
+  <div class="container" id="container">
+    <div class="information-content">
+      <!-- <img id="prodimage" src="{{ url_for('static', filename='images/normal-images/ginda.png') }}" alt="Default image"/> -->
+      <h2 class="text-xl">Información de Productos</h2>
 
-          <p>
-            En esta sección podrás ver los productos que se encuentran disponibles en la plataforma. Podrás ver el tipo de producto, el nombre del producto, la región y comuna donde se encuentra, y
-            una foto del producto.
-          </p>
-        </div>
-        <div class="producto-content">
-          <table id="table-content">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Tipo</th>
-                <th>Comuna</th>
-                <th>Productor</th>
-                <th>Foto</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% if data %}
-                {% for product in data%}
-                <tr>
-                  <th>{{product.id}}</th>
-                  <th>{{product.tipo}}</th>
-                  <th>{{product.comuna}}</th>
-                  <th>{{product.nombre_productor}}</th>
-                  <td><img src={{product.foto}} alt="" height="120" width="120" /></td>
-                </tr>
-                {% endfor %}
-              {% endif %}
-            </tbody>
-          </table>
-          <div>
-            <button class="btn" id="btn-back">Anteriores</button>
-            <button class="btn" id="btn-next">Siguientes</button>
-          </div>
-        </div>
+      <p>
+        En esta sección podrás ver los productos que se encuentran disponibles en la plataforma. Podrás ver el tipo de
+        producto, el nombre del producto, la región y comuna donde se encuentra, y
+        una foto del producto.
+      </p>
+    </div>
+    <div class="producto-content">
+      <table id="table-content">
+        <thead>
+          {% if toplabels %}
+          <tr>
+            <th>{{toplabels[0]}}</th>
+            <th>{{toplabels[1]}}</th>
+            <th>{{toplabels[2]}}</th>
+            <th>{{toplabels[3]}}</th>
+            <th>{{toplabels[4]}}</th>
+            <th>{{toplabels[5]}}</th>
+          </tr>
+          {% endif %}
+        </thead>
+
+        <tbody>
+          {% if data %}
+          {% for product in data%}
+          <tr>
+            <th>{{product.id}}</th>
+            <th>{{product.fruto_verdura[0]}}</th>
+            <th>{{product.tipo}}</th>
+            <th>{{product.region}}</th>
+            <th>{{product.comuna}}</th>
+            <td><img src={{product.foto}} alt="" height="120" width="120" /></td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+      <div>
+        <button class="btn" id="btn-back">Anteriores</button>
+        <button class="btn" id="btn-next">Siguientes</button>
       </div>
-    </main>
+    </div>
+  </div>
+</main>
 {% endblock %}
 
 {% block footer %}
-    {% include 'includes/footer.html' %}
+{% include 'includes/footer.html' %}
 {% endblock %}
 
 {% block js %}
-    <script src="{{url_for('static', filename='js/popup.js')}}"></script>
-    <script  src="{{url_for('static', filename='js/display-informacion.js')}}"></script>
+<script src="{{url_for('static', filename='js/popup.js')}}"></script>
+<script src="{{url_for('static', filename='js/display-informacion.js')}}"></script>
 {% endblock %}
