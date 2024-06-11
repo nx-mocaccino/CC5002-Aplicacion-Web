@@ -7,33 +7,60 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
 {% endblock %}
 
-{% block popup %}{% endblock %}
+{% block context %}ver-pedido{% endblock %}
+
+{% block popup %}
+{% include 'includes/full_image.html' %}
+{% endblock %}
 
 {% block header %}
 {% include 'includes/navigation.html'%}
 {% endblock %}
 
 {% block content %}
-<main>
-    <div class="container" id="container">
-      <div class="information-content">
-        <!-- <img id="prodimage" src ="../images/minimal-images/palta.png" alt="Default image"> -->
-        <h2 class="text-xl">Información de Pedido</h2>
+{% include 'includes/full_image.html' %}
 
-        <p>
-          En esta sección podrás ver los productos que se encuentran disponibles en la plataforma. Podrás ver el tipo de producto, el nombre del producto, la región y comuna donde se encuentra, y
-          una foto del producto.
-        </p>
-      </div>
-      <div class="producto-content">
+<main>
+  <div class="container" id="container">
+    <div class="information-content">
+      <h2 class="text-xl">Información de Pedidos</h2>
+      <p>
+        En esta sección podrás ver los pedidos que se encuentran disponibles en la plataforma. Podrás ver el tipo de
+        producto, el nombre del producto, la región y comuna donde se encuentra, y una foto del producto.
+      </p>
     </div>
+    {% include 'includes/informacion-pedido.html' %}
+
+    <div class="producto-content">
+      <table id="table-content">
+        <thead> 
+          <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Region</th>
+            <th>Comuna</th>
+            <th>Nombre Comprador</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+      <div>
+        <button class="btn" id="btn-back">Anteriores</button>
+        <button class="btn" id="btn-next">Siguientes</button>
+      </div>
+    </div>
+</main>
 {% endblock %}
 
 {% block footer %}
-    {% include 'includes/footer.html' %}
+{% include 'includes/footer.html' %}
 {% endblock %}
 
 {% block js %}
-    <script  src="{{url_for('static', filename='js/popup.js')}}"></script>
-    <script  src="{{url_for('static', filename='js/display-informacion.js')}}"></script>
+<script src="{{url_for('static', filename='js/popup.js')}}"></script>
+<script src="{{url_for('static', filename='js/ver-registro.js')}}"></script>
 {% endblock %}

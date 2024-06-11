@@ -4,17 +4,29 @@
     "get_productos_recientes_limitado_5": "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT 0, 5",
     "get_productos_siguientes_5": "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT 5, 5",
     "get_productos_siguientes_5_con_comuna": "SELECT PRO.id, PRO.tipo, PRO.descripcion, COM.nombre, PRO.nombre_productor, PRO.email_productor, PRO.celular_productor FROM producto PRO, comuna COM WHERE PRO.comuna_id = COM.id ORDER BY id DESC LIMIT 5, 5",
+    
     "tipos_verdura_fruta_asociados_a_producto": "SELECT TVF.nombre FROM tipo_verdura_fruta TVF, producto_verdura_fruta PVF WHERE TVF.id=PVF.tipo_verdura_fruta_id AND PVF.producto_id=%s",
+    "tipos_verdura_fruta_asociados_a_pedido": "SELECT TVF.nombre FROM tipo_verdura_fruta TVF, pedido_verdura_fruta PVF WHERE TVF.id=PVF.tipo_verdura_fruta_id AND PVF.pedido_id=%s",
+    
     "insert_product_vegatable_fruit": "INSERT INTO producto_verdura_fruta (producto_id, tipo_verdura_fruta_id) VALUES (%s, %s)",
+    "insert_pedido_vegatable_fruit": "INSERT INTO pedido_verdura_fruta (pedido_id, tipo_verdura_fruta_id) VALUES (%s, %s)",
+
     "insert_picture": "INSERT INTO foto (ruta_archivo, nombre_archivo, producto_id) VALUES (%s, %s, %s)",
+    
     "fotos_informadas_para_producto": "SELECT ruta_archivo, nombre_archivo FROM foto WHERE producto_id=%s",
     "ultimo_id_insertado": "SELECT LAST_INSERT_ID()",
     "get_regions": "SELECT id, nombre FROM region ORDER BY id DESC",
     "get_communes_by_id": "SELECT id, nombre FROM comuna WHERE region_id=%s ORDER BY id DESC",
     "get_commune_by_id": "SELECT id, nombre, region_id FROM comuna WHERE id=%s",
     "get_commune_by_name_and_region": "SELECT id FROM comuna WHERE nombre=%s AND region_id=%s",
+
     "insert_product": "INSERT INTO producto (tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor) VALUES (%s, %s, %s, %s, %s, %s)",
+    "insert_pedido": "INSERT INTO pedido (tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador) VALUES (%s, %s, %s, %s, %s, %s)",
+
     "get_vegetable_fruit_by_name": "SELECT * FROM tipo_verdura_fruta WHERE nombre=%s ",
-    "get_region_by_id": "SELECT id, nombre FROM region WHERE id=%s"
+    "get_region_by_id": "SELECT id, nombre FROM region WHERE id=%s",
+
+    "get_products": "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT %s, 5",
+    "get_pedidos": "SELECT id, tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido ORDER BY id DESC LIMIT %s, 5"
   }
 }

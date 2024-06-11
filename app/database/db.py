@@ -38,11 +38,16 @@ def get_region_by_id(id):
 def get_products(id): #id actual
     conn = get_conn()
     cursor = conn.cursor()
-    # cursor.execute("SELECT COUNT(*) FROM producto")   
-    query_sql = "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT %s, 5"
-    cursor.execute(query_sql, (id,))
+    cursor.execute(QUERY_DICT["get_products"], (id,))
     products = cursor.fetchall()
     return products
+
+def get_pedidos(id): #id actual
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_pedidos"], (id,))
+    pedidos = cursor.fetchall()
+    return pedidos
 
 def get_communes(region_id):
     conn = get_conn()
@@ -58,10 +63,24 @@ def create_product(type_product, description, commune_id, productor_name, produc
     conn.commit()
     return cursor.lastrowid
 
-def create_product_vegetable_fruit(producto_id, tipo_verdura_fruta_id):
+def create_pedido(type_product, description, commune_id, productor_name, productor_email, productor_phone):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["insert_pedido"], (type_product, description, commune_id, productor_name, productor_email, productor_phone,))
+    conn.commit()
+    return cursor.lastrowid
+
+def insert_product_vegetable_fruit(producto_id, tipo_verdura_fruta_id):
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute(QUERY_DICT["insert_product_vegatable_fruit"], (producto_id, tipo_verdura_fruta_id,))
+    conn.commit()
+    return cursor.lastrowid
+
+def insert_pedido_vegetable_fruit(pedido_id, tipo_verdura_fruta_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["insert_pedido_vegatable_fruit"], (pedido_id, tipo_verdura_fruta_id,))
     conn.commit()
     return cursor.lastrowid
 
@@ -76,6 +95,13 @@ def get_product_vegetable_fruit_by_product(product_id):
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute(QUERY_DICT["tipos_verdura_fruta_asociados_a_producto"], (product_id,))
+    results = cursor.fetchall()
+    return results
+
+def get_pedido_vegetable_fruit_by_pedido(pedido_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["tipos_verdura_fruta_asociados_a_pedido"], (pedido_id,))
     results = cursor.fetchall()
     return results
 

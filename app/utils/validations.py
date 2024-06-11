@@ -137,7 +137,7 @@ def validate_request(username, email, phone, category, products, region, commune
     _region = is_valid_region(region)
     _communa = is_valid_comuna(region, commune)
     _description = is_valid_description(description)
-    _files = is_valid_files(files)
+    
 
     if not _username["valid"]:
         message = _username["message"]
@@ -163,8 +163,10 @@ def validate_request(username, email, phone, category, products, region, commune
     elif not _description["valid"]:
         message = _description["message"]
 
-    elif not _files["valid"]:
-        message = _files["message"]
+    elif files == "":
+        _files = is_valid_files(files)
+        if not _files["valid"]:
+            message = _files["message"]
 
     if message != "":
         return [False, message]

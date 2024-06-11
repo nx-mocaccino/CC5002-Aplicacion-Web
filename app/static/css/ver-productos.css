@@ -35,7 +35,8 @@ tr {
 /* header de la tabla*/
 table tr th {
   display: flex;
-  justify-content: center; /* Centrar el contenido horizontalmente */
+  justify-content: center;
+  /* Centrar el contenido horizontalmente */
   align-items: center;
   width: 100%;
   height: 10vh;
@@ -124,10 +125,12 @@ table tr td:last-child {
 }
 
 .mask-modal {
-  position: absolute; /* Cambiado de absolute a fixed */
+  position: absolute;
+  /* Cambiado de absolute a fixed */
   top: 1%;
   left: 0;
-  width: 100vw; /* Cambiado de 100% a 100vw */
+  width: 100vw;
+  /* Cambiado de 100% a 100vw */
   min-height: 203vh;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 10;
@@ -159,4 +162,59 @@ table tr td:last-child {
   opacity: 1;
   transform: translateY(1vh);
   display: flex;
+}
+
+.container-hidden {
+  position: absolute;
+  display: flex;
+  visibility: hidden;
+  align-items: flex-start;
+  justify-content: center;
+
+}
+
+.container-visible {
+  position: relative;
+  display: flex;
+  visibility: visible;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  justify-content: left;
+}
+
+#information-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 40vh;
+
+  height: 100%;
+}
+
+#information-content > div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  height: 40vh;
+  min-width: 40vh;
+  width: 100%;
+}
+
+#information-content > div:first-child div  {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  min-width: 40vh;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#information-content img{
+  border: 0.2em solid var(--black-color);
+  display: block;
 }

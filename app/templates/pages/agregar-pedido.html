@@ -7,8 +7,11 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/agregar-producto.css')}}" />
 {% endblock %}
 
+
+{% block context %}agregar-pedido{% endblock %}
 {% block popup %}
 {% include 'includes/popup_confirm.html' %}
+<!-- {% include 'includes/popup_rolling.html' %} -->
 {% endblock %}
 
 {% block header %}
@@ -16,17 +19,20 @@
 {% endblock %}
 
 {% block content %}
-<main>
+<main data-context="product">
   <!-- content -->
   <div class="container">
     <section class="user-form">
 
-      <form id="conf-form" action="{{url_for('agregar_producto')}}" method="POST" enctype="multipart/form-data">
+      <form id="conf-form" action="{{url_for('agregar_pedido')}}" method="POST" enctype="multipart/form-data">
         <h2 class="text-xl">Formulario de Pedidos</h2>
 
         <div class="user-form-content">
           <!-- nombre de usuario -->
+
           <div class="error-message"></div>
+
+
           <div class="input-box">
             <label for="username">
               Nombre Completo
@@ -109,17 +115,8 @@
             </label>
             <div class="error"></div>
           </div>
-
-          <!-- fotos del producto -->
-          <div class="input-box">
-            <label for="archivo-producto">Fotos de pedidos:
-              <input type="file" id="archivo-producto" name="archivo-producto" accept="image/*" multiple required />
-            </label>
-            <div class="error"></div>
-          </div>
-
           <div class="button-container">
-            <button type="button" id="button-form">Agregar Pedido</button>
+            <button type="button" id="button-form-pedido">Agregar Pedido</button>
           </div>
         </div>
       </form>
@@ -136,4 +133,5 @@
 <script src="{{url_for('static', filename='js/validation.js')}}"></script>
 <script src="{{url_for('static', filename='js/loading-options.js')}}"></script>
 <script src="{{url_for('static', filename='js/popup.js')}}"></script>
+<script src="{{url_for('static', filename='js/form.js')}}"></script>
 {% endblock %}

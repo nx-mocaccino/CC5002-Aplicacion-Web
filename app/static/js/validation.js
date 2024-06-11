@@ -125,7 +125,7 @@ function isValidFile(file) {
 }
 
 // Form validation. Check all fields
-function validateForm() {
+function validateForm(formname) {
   let check = true;
   // give all values of the select element
   const username = document.getElementById("username");
@@ -136,7 +136,6 @@ function validateForm() {
   const region = document.getElementById("region");
   const comuna = document.getElementById("comuna");
   const producto = document.getElementById("producto");
-  const files = document.getElementById("archivo-producto");
 
   // username - mandatory
   const validationName = isValidName(username);
@@ -208,16 +207,16 @@ function validateForm() {
   } else {
     setSuccess(producto);
   }
-
-  // image - optional
-  const validationFiles = isValidFile(files);
-  if (!validationFiles.valid) {
-    setError(files, "");
-    check = false;
-  } else {
-    setSuccess(files);
+  if (formname === "agregar-producto") {
+    const files = document.getElementById("archivo-producto");
+    const validationFiles = isValidFile(files);
+    if (!validationFiles.valid) {
+      setError(files, "");
+      check = false;
+    } else {
+      setSuccess(files);
+    }
   }
-  if (check) {
-  }
+  console.log(formname);
   return check;
 }

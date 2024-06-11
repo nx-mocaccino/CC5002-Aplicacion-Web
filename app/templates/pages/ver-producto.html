@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
 {% endblock %}
 
+{% block context %}ver-producto{% endblock %}
+
 {% block popup %}
 {% include 'includes/full_image.html' %}
 {% endblock %}
@@ -16,46 +18,34 @@
 {% endblock %}
 
 {% block content %}
+{% include 'includes/full_image.html' %}
+
 <main>
   <div class="container" id="container">
     <div class="information-content">
-      <!-- <img id="prodimage" src="{{ url_for('static', filename='images/normal-images/ginda.png') }}" alt="Default image"/> -->
       <h2 class="text-xl">Información de Productos</h2>
-
       <p>
         En esta sección podrás ver los productos que se encuentran disponibles en la plataforma. Podrás ver el tipo de
-        producto, el nombre del producto, la región y comuna donde se encuentra, y
-        una foto del producto.
+        producto, el nombre del producto, la región y comuna donde se encuentra, y una foto del producto.
       </p>
     </div>
+    {% include 'includes/informacion-producto.html' %}
+
     <div class="producto-content">
       <table id="table-content">
-        <thead>
-          {% if toplabels %}
+        <thead> 
           <tr>
-            <th>{{toplabels[0]}}</th>
-            <th>{{toplabels[1]}}</th>
-            <th>{{toplabels[2]}}</th>
-            <th>{{toplabels[3]}}</th>
-            <th>{{toplabels[4]}}</th>
-            <th>{{toplabels[5]}}</th>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Región</th>
+            <th>Comuna</th>
+            <th>Foto</th>
           </tr>
-          {% endif %}
         </thead>
 
         <tbody>
-          {% if data %}
-          {% for product in data%}
-          <tr>
-            <th>{{product.id}}</th>
-            <th>{{product.fruto_verdura[0]}}</th>
-            <th>{{product.tipo}}</th>
-            <th>{{product.region}}</th>
-            <th>{{product.comuna}}</th>
-            <td><img src={{product.foto}} alt="" height="120" width="120" /></td>
-          </tr>
-          {% endfor %}
-          {% endif %}
+
         </tbody>
       </table>
       <div>
@@ -63,7 +53,6 @@
         <button class="btn" id="btn-next">Siguientes</button>
       </div>
     </div>
-  </div>
 </main>
 {% endblock %}
 
@@ -73,5 +62,5 @@
 
 {% block js %}
 <script src="{{url_for('static', filename='js/popup.js')}}"></script>
-<script src="{{url_for('static', filename='js/display-informacion.js')}}"></script>
+<script src="{{url_for('static', filename='js/ver-registro.js')}}"></script>
 {% endblock %}

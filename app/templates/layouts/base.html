@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     </head>
-    <body>
+    <body data-context="{% block context %}{% endblock %}">
     {% block popup %}{% endblock %}
     {% block header %}{% endblock %} {% block content %} {% endblock %} {% block footer %}{% endblock %} 
   </body>
