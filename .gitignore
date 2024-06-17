@@ -79,6 +79,8 @@ Thumbs.db
 *.jpg
 *.png
 
+!app/static/images/*.png
+
 # Data Sample
 !data/videotest5.mp4
 
