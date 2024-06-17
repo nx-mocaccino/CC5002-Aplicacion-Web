@@ -61,7 +61,7 @@
             <div class="input-box">
               <label for="categoria-producto">Categoria
                 <select name="categoria-producto" id="categoria-producto" required>
-                  <option value="vacio" label="Seleccionar" selected>Seleccionar</option>
+                  <option value="" label="Seleccionar" selected>Seleccionar</option>
                   <option value="fruta" label="fruta">Frutas</option>
                   <option value="verdura" label="verdura">Verduras</option>
                 </select>
@@ -73,7 +73,7 @@
             <div class="input-box">
               <label for="producto">Producto
                 <select name="tipo-producto" id="producto" size=5 multiple required>
-                  <option value="0" label="Seleccionar" default disabled>Seleccionar</option>
+                  <option value="0" label="Seleccionar" disabled>Seleccionar</option>
                 </select>
               </label>
               <div class="error"></div>
@@ -86,7 +86,7 @@
             <div class="input-box">
               <label for="region">Región:
                 <select required name="region" id="region">
-                  <option value="" label="" selected>Seleccionar</option>
+                  <option value="" label="Seleccionar" selected>Seleccionar</option>
                   {% if data %}
                   {% for option in data %}
                   <option value="{{option.id}}">{{option.name}}</option>
@@ -101,7 +101,7 @@
             <div class="input-box">
               <label for="comuna">Comuna:
                 <select name="comuna" id="comuna" required>
-                  <option value="" label="Seleccionar" default></option>
+                  <option value="" label="Seleccionar" selected></option>
                 </select>
               </label>
               <div class="error"></div>

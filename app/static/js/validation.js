@@ -75,7 +75,7 @@ function isValidPhone(phone) {
 }
 function isValidTypeProduct(category) {
   const trimmedInput = category.value.trim();
-  return trimmedInput !== "vacio";
+  return trimmedInput !== "";
 }
 function isValidDescription(description) {
   // validar que solo sea texto
@@ -105,7 +105,7 @@ function isValidProducto(producto) {
   }
   for (let i = 0; i < selectedOps.length; i++) {
     console.log(selectedOps[i].value);
-    if (selectedOps[i].value === "vacio") {
+    if (selectedOps[i].value === "") {
       return { valid: false, message: "'Por seleccionar' no valido." };
     }
   }

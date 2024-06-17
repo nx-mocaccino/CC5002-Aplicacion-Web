@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
 {% endblock %}
 
-{% block context %}ver-pedido{% endblock %}
+{% block context %}ver-producto{% endblock %}
 
 {% block popup %}
 {% include 'includes/full_image.html' %}
@@ -18,41 +18,54 @@
 {% endblock %}
 
 {% block content %}
-{% include 'includes/full_image.html' %}
 
 <main>
   <div class="container" id="container">
-    <div class="information-content">
-      <h2 class="text-xl">Información de Pedidos</h2>
-      <p>
-        En esta sección podrás ver los pedidos que se encuentran disponibles en la plataforma. Podrás ver el tipo de
-        producto, el nombre del producto, la región y comuna donde se encuentra, y una foto del producto.
-      </p>
-    </div>
-    {% include 'includes/informacion-pedido.html' %}
-
-    <div class="producto-content">
-      <table id="table-content">
-        <thead> 
-          <tr>
-            <th>ID</th>
-            <th>Producto</th>
-            <th>Tipo</th>
-            <th>Region</th>
-            <th>Comuna</th>
-            <th>Nombre Comprador</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-        </tbody>
-      </table>
-      <div>
-        <button class="btn" id="btn-back">Anteriores</button>
-        <button class="btn" id="btn-next">Siguientes</button>
+      <div class="information-content">
+          <h2 class="text-xl">Información de Pedidos</h2>
+          <p>
+              En esta sección podrás ver los pedidos que se encuentran disponibles en la plataforma. Podrás ver el tipo de
+              producto, el nombre del producto, la región y comuna donde se encuentra, y una foto del producto.
+          </p>
       </div>
-    </div>
+      <div class="information-content container-hidden" id="information-content">
+          <div class="info">
+              <div>
+                  <h2>Información Pedido</h2>
+                  <p id="nombre_comprador"></p>
+                  <p id="region"></p>
+                  <p id="comuna"></p>
+                  <p id="tipo"></p>
+                  <p id="producto"></p>
+                  <p id="email"></p>
+                  <p id="celular"></p>
+                  <p id="descripcion"></p>
+              </div>
+          </div>
+      </div>
+
+      <div class="producto-content">
+          <table id="table-content">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Producto</th>
+                      <th>Tipo</th>
+                      <th>Región</th>
+                      <th>Comuna</th>
+                      <th>Nombre Comprador</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!-- Contenido de la tabla -->
+              </tbody>
+          </table>
+          <div>
+              <button class="btn" id="btn-back">Anteriores</button>
+              <button class="btn" id="btn-next">Siguientes</button>
+          </div>
+      </div>
+  </div>
 </main>
 {% endblock %}
 

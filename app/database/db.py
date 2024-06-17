@@ -133,5 +133,19 @@ def insert_picture(path, filename,  product_id):
     conn.commit()
     return cursor.lastrowid
 
+def get_stats_pedidos_by_commune():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_stats_pedidos_by_commune"])
+    results = cursor.fetchall()
+    return results
+
+def get_stats_total_frutas_verduras():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_stats_total_frutas_verduras"])
+    results = cursor.fetchall()
+    return results
+
 if __name__ == "__main__":
     print(get_regions())

@@ -229,6 +229,45 @@ def get_information_table_pedido(page):
             })
         print(data)
         return jsonify(data), 200
+    
+
+@app.route('/graficos_resumen', methods=['GET'])
+def graficos_resumen():
+    return render_template('pages/graficos_resumen.html')
+
+
+@app.route('/get-stats-data-pedido', methods=['GET'])
+def get_stats_data():
+    db_response = db.get_stats_pedidos_by_commune()
+    data = list()
+    directdata = db_response[:10]
+    others = db_response[10:]
+    print(others)
+    for response in directdata:
+        data.append({
+            "comuna": response[0],
+            "cantidad": response[1]
+        })
+    data.append({
+        "comuna": "Otros",
+        "cantidad": f"{len(others)}"})
+    return jsonify(data)
+
+@app.route('/get-stats-data-producto', methods=['GET'])
+def get_stats_data_product():
+    data = list()
+    db_response  = db.get_stats_total_frutas_verduras()
+    
+    for response in db_response[:5]:
+        data.append({
+            "tipo": response[0],
+            "cantidad": response[1]
+        })
+
+    print(data)
+    return jsonify(data)
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)

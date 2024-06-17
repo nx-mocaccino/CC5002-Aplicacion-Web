@@ -27,6 +27,10 @@
     "get_region_by_id": "SELECT id, nombre FROM region WHERE id=%s",
 
     "get_products": "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT %s, 5",
-    "get_pedidos": "SELECT id, tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido ORDER BY id DESC LIMIT %s, 5"
+    "get_pedidos": "SELECT id, tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido ORDER BY id DESC LIMIT %s, 5",
+  
+    "get_stats_pedidos_by_commune": "SELECT COM.nombre, COUNT(*) FROM pedido PED, comuna COM WHERE PED.comuna_id = COM.id GROUP BY PED.comuna_id ORDER BY COUNT(*) DESC",
+    "get_stats_total_frutas_verduras": "SELECT TVF.nombre, COUNT(*) FROM tipo_verdura_fruta TVF, producto_verdura_fruta PVF WHERE TVF.id=PVF.tipo_verdura_fruta_id GROUP BY TVF.id ORDER BY COUNT(*) DESC"
   }
+
 }

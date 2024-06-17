@@ -1,5 +1,5 @@
 function charge_product(key){
-  if (key === "vacio"){
+  if (key === ""){
     document.getElementById("producto").innerHTML = "";
     var option = document.createElement("option");
     option.text = "Seleccionar";
