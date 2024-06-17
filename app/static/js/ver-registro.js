@@ -17,8 +17,6 @@ function clickRows(rows) {
     row.addEventListener("click", () => {
       id = parseInt(row.children[0].textContent.trim());
       actual_data.some(values =>{
-        console.log(values)
-        console.log(values.foto[0].normal)
         if (values.id === id){    
           informationProduct.querySelector('#nombre_productor').innerHTML = `<strong>${"Tipo de Producto"}:</strong> ${values.nombre_productor}`;
           informationProduct.querySelector('#region').innerHTML = `<strong>${"Región"}:</strong> ${values.region}`;
@@ -157,7 +155,7 @@ if (context === "ver-producto"){
   populateTablePedido(number_page);
 }
 
-
+console.log(context)
 if (context === "ver-producto"){
   // this function display the image in a modal
   const image640x480 = document.querySelector("#foto640x480");

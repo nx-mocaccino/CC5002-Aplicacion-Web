@@ -19,6 +19,8 @@ CC5002-Aplicacion-Web
 ```
 ## Uso
 
+## TAREA1
+
 Para ejecutar el proyecto bajo las mismas condiciones de desarrollo, asegurar de estar en el directorio raíz `CC5002-Aplicacion-Web` y luego inicializa el proyecto con la extensión `Live Server` de `Visual Studio Code`.
 
 
@@ -44,6 +46,30 @@ Ejecutar el rpeositorio como
 ```bash
 python3 app/app.py
 ```
+
+## TAREA3
+
+### Funcionalidades de Pedidos
+
+1. **Agregar Pedido (2 puntos):**
+   - Implementación de un formulario con validaciones en Javascript (clientside) y con Python (serverside). Manejo de mensajes de éxito o errores al volver a la página de inicio.
+
+2. **Ver Pedidos (1 punto):**
+   - Implementación de un listado paginado de pedidos obtenidos de la base de datos. Cada página presenta 5 elementos, ordenados por fecha de pedido en orden descendente.
+
+3. **Información de Pedido (1 punto):**
+   - Implementación de visualización detallada al hacer clic en un pedido, obteniendo datos dinámicamente desde la base de datos mediante peticiones asíncronas.
+
+### NUEVA FUNCIONALIDAD: Visualización de Estadísticas
+
+1. **Gráfico de Productos y Pedidos (1 punto cada uno):**
+Utilización **fetch** para generar gráficos de productos por tipo y pedidos por comuna.
+
+    - **PEDIDOS**: Se añade un gráfico con las primeras 10 comunas que acumulan mayor número de pedidos.
+      ![Grafico Pedidos](app/static/images/layout3.png)
+    - **PRODUCTOS**: e añade un gráfico con los primeros 5 tipos de frutas o verduras con mayor inventario.
+      ![Grafico Productos](app/static/images/layout2.png)
+
 
 
 ## Recursos de Terceros

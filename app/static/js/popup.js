@@ -91,8 +91,8 @@ function submitPedido(maskModal, modal) {
 const maskModal = document.querySelector(".mask-modal");
 const modal = document.querySelector(".modal");
 
-document.getElementById("roll").addEventListener("click", function () {
-  const modal = document.querySelector(".modal-roll");
-  console.log(modal);
-  openModal(maskModal, modal);
-});
+// document.getElementById("roll").addEventListener("click", function () {
+//   const modal = document.querySelector(".modal-roll");
+//   console.log(modal);
+//   openModal(maskModal, modal);
+// });
