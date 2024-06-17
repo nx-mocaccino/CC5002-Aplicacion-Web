@@ -1,0 +1,66 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Minimercado RickRolling{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ver-productos.css')}}" />
+{% endblock %}
+
+{% block context %}ver-producto{% endblock %}
+
+{% block popup %}
+{% include 'includes/full_image.html' %}
+{% endblock %}
+
+{% block header %}
+{% include 'includes/navigation.html'%}
+{% endblock %}
+
+{% block content %}
+
+<main>
+  <div class="container" id="container">
+    <div class="information-content">
+      <h2 class="text-xl">Información de Productos</h2>
+      <p>
+        En esta sección podrás ver los productos que se encuentran disponibles en la plataforma. Podrás ver el tipo de
+        producto, el nombre del producto, la región y comuna donde se encuentra, y una foto del producto.
+      </p>
+    </div>
+    {% include 'includes/informacion-producto.html' %}
+
+    <div class="producto-content">
+      <table id="table-content">
+        <thead> 
+          <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Región</th>
+            <th>Comuna</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+      <div>
+        <button class="btn" id="btn-back">Anteriores</button>
+        <button class="btn" id="btn-next">Siguientes</button>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'includes/footer.html' %}
+{% endblock %}
+
+{% block js %}
+<script src="{{url_for('static', filename='js/popup.js')}}"></script>
+<script src="{{url_for('static', filename='js/ver-registro.js')}}"></script>
+{% endblock %}

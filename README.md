@@ -24,13 +24,29 @@ Para ejecutar el proyecto bajo las mismas condiciones de desarrollo, asegurar de
 
 ## Consideraciones
 
-1. Para el apartado de informacion-producto.html y informacion-pedidos.html se implementar un estructura dinámica que permita mostrar exactamente la información que se selecciona en ver-producto.html y ver-pedido.html respectivamente. Se decide insertar el HMTL de información en la página donde se ven los productos sin ninguna otra motivación que decisión creativa.
+1. Para el apartado de informacion-producto.html y informacion-pedidos.html se implementar un estructura dinámica que permita mostrar exactamente la información que se selecciona en ver-producto.html y ver-pedido.html respectivamente. Se decide insertar el HTML de información en la página donde se ven los productos por decisión creativa.
 
 2. **Responsive:** Se considera el uso de **contenedores flexibles** y **medidas dinámicas** para que se adapte en diferentes resoluciones estandar  y se realizan pruebas de uso en los navegadores **Vivaldi** y **Firefox**. A pesar de lo anterior, esta versión no está diseñada para ser completamente *responsive* en todos los formatos de pantalla.
 
 3. **Teléfono:** Se considera como valido solo números moviles nacionales. Si bien se limita el campo de entrada a 15 carácteres por enunciado, posteriormente solo se aceptar entradas de 9 carácteres.
 
 
+## TAREA2
+
+Se debe ejecutar un docker con el motor de mysql y utilizar las credenciales entregadas por el cuerpo docente.
+
+``` bash
+docker  run -d -p 3306:3306 --name mysql_server -e MYSQL_ROOT_PASSWORD=0123456789 mysql:latest
+```
+
+Ejecutar el rpeositorio como
+
+```bash
+python3 app/app.py
+```
+
+
 ## Recursos de Terceros
 
 Todos los iconos utilizados se extraen mediante una licencia gratuita desde la plataforma **Freepik**.
+

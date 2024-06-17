@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Minimercado RickRolling{% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/index.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/agregar-producto.css')}}" />
+{% endblock %}
+
+{% block popup %} 
+{% include 'includes/popup_rolling.html' %}
+{% endblock %}
+
+{% block header %}
+{% include 'includes/navigation.html'%}
+{% endblock %}
+
+{% block content %}
+<main>
+  <!-- content -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="text-xxl">Bienvenido al Sistema de Frutas y Verduras</h1>
+        <p class="text-normal">
+          En esta plataforma, los productores de frutas y verduras pueden
+          informar sobre los productos que tienen disponibles para la venta.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'includes/footer.html' %}
+{% endblock %}
+
+{% block js %}
+<script src="{{url_for('static', filename='js/popup.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,21 @@
+<header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="{{url_for('index')}}">
+            <img src="../../static/images/image.ico" alt="logo" />
+          </a>
+        </div>
+        <div class="main-menu">
+          <ul>
+            <li><a href="{{url_for('index')}}">Inicio</a></li>
+            <li><a href="{{url_for('ver_pedido', key=0)}}"> Ver Pedidos </a></li>
+            <li><a href="{{url_for('agregar_pedido')}}"> Agregar Pedido </a></li>
+            <li><a href="{{url_for('ver_producto', key=0)}}"> Ver Producto </a></li>
+            <li><a href="{{url_for('agregar_producto')}}"> Agregar Producto </a></li>
+            <li><a href="{{url_for('graficos_resumen')}}"> Estadísticas </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>

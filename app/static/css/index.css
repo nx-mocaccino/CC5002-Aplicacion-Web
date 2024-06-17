@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-color: #4891ff;
+  --light-color: #f1f1f1;
+  --black-color: #333;
+  --gray-color: #474747;
+  --purple-color: #8a2be2;
+  --red-color: #e14141;
+  --background-color: #f1f1f1;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*TEXT STYLE*/
+.text-xxl {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--black-color);
+  text-align: center;
+
+}
+
+.text-normal {
+  margin: 0 20px;
+  text-align: center;
+  color: var(--gray-color);
+}
+
+.text-xs {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--light-color);
+  text-align: left;
+  padding: 0px 3px;
+}
+
+/* CLASSES */
+
+.navbar {
+  background: var(--gray-color);
+  padding: 10px 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-menu ul {
+  display: flex;
+  align-items: center;
+}
+
+.main-menu ul li {
+  font-size: 14px;
+  float: left;
+  position: relative;
+}
+.main-menu ul li a {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: right;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 10px auto;
+}
+
+.main-menu ul li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.175em;
+  background: var(--red-color);
+  left: 0;
+  bottom: 0;
+  transform: scale(0, 1);
+
+  transition: transform 0.4s ease;
+}
+
+.main-menu ul li a:hover::after {
+  transform: scale(1, 1);
+}
+
+/* CONTAINER STUFF */
+
+.hero-content {
+  padding: 100px 0;
+  height: 40vh;
+}
+
+.hero .hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  background: white;
+  border: 0.2em solid var(--black-color);
+  border-radius: 0.25em;
+  box-shadow: 0.2em 0.2em 10px 0px var(--black-color);
+  margin: 1em 1em 2em 1em;
+  padding: 0.5em 1em 1em 1em;
+}
+
+/* FOOTER */
+
+.container .footer-content {
+  display: flex;
+  justify-content: right;
+}
+
+.container {
+  width: 90vw;
+  max-width: 1000px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+footer .container {
+  padding: 10px 10px;
+  background: var(--black-color);
+}
+
+
+.modal-active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(1vh);
+  display: flex;
+}
