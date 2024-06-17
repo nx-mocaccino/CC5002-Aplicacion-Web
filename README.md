@@ -66,9 +66,9 @@ python3 app/app.py
 Utilización **fetch** para generar gráficos de productos por tipo y pedidos por comuna.
 
     - **PEDIDOS**: Se añade un gráfico con las primeras 10 comunas que acumulan mayor número de pedidos.
-      ![Grafico Pedidos](app/static/images/layout3.png)
+      !["Grafico Pedidos"](app/static/images/layout3.png)
     - **PRODUCTOS**: e añade un gráfico con los primeros 5 tipos de frutas o verduras con mayor inventario.
-      ![Grafico Productos](app/static/images/layout2.png)
+      !["Grafico Productos"](app/static/images/layout2.png)
 
 
 
